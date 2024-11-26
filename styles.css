@@ -147,3 +147,16 @@ body {
   pointer-events: none;
 }
 
+footer {
+    position: fixed; /* Sticks the footer to the bottom of the viewport */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black; /* Dark background for contrast */
+    color: white; /* White text for readability */
+    text-align: center; /* Center-align the text */
+    padding: 10px 0; /* Add some vertical spacing */
+    font-size: 14px; /* Small but legible font size */
+    font-family: Arial, sans-serif; /* Clean font style */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Optional shadow for aesthetics */
+}
