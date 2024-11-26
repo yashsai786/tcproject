@@ -1,17 +1,17 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  
   background: #f4f4f4;
   color: #333;
-overflow-y: auto;
-  margin: 0;
-    padding: 0;
+
+  margin: 5;
+    padding: 5;
     box-sizing: border-box;
     height: 100%; /* Ensure full height */
     display: flex; /* Flexbox layout for centering */
     justify-content: center;
     align-items: center;
+  overflow-y: auto;
 }
 /* Center the content on the page */
 .content-container {
