@@ -19,6 +19,7 @@ body {
     position: relative;
     justify-items: center;
     align-items: center;
+    overflow-y: auto; 
 }
 
 /* Dot styling */
