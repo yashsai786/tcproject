@@ -124,28 +124,7 @@ button:hover {
 }
 
 /* Body styles for dot grid */
-body {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(5px, 1fr)); /* Smaller dots for responsiveness */
-  grid-template-rows: repeat(auto-fill, minmax(5px, 1fr)); /* Smaller dots */
-  grid-gap: 5px; /* Gap between dots */
-  overflow: hidden;
-  background-color: #000000;
-  position: relative;
-  justify-items: center;
-  align-items: center;
-}
 
-/* Dot styling */
-.dot {
-  width: 2px; /* Smaller dot size */
-  height: 2px; /* Smaller dot size */
-  border-radius: 50%;
-  background-color: gray;
-  transition: background-color 0.3s ease;
-  pointer-events: none;
-}
 
 footer {
     position: fixed; /* Sticks the footer to the bottom of the viewport */
