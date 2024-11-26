@@ -26,6 +26,7 @@ body {
     width: 80%; /* Default width for larger screens */
     max-width: 500px; /* Prevents it from growing too large */
     box-sizing: border-box;
+  margin: 20px 0;
 }
 
 /* Adjustments for smaller screens */
