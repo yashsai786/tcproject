@@ -1,0 +1,61 @@
+/* background.css */
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles for dot grid */
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5px, 1fr)); /* Smaller dots for responsiveness */
+    grid-template-rows: repeat(auto-fill, minmax(5px, 1fr)); /* Smaller dots */
+    grid-gap: 5px; /* Gap between dots */
+    overflow: hidden;
+    background-color: #000000;
+    position: relative;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Dot styling */
+.dot {
+    width: 2px; /* Smaller dot size */
+    height: 2px; /* Smaller dot size */
+    border-radius: 50%;
+    background-color: gray;
+    transition: background-color 0.3s ease;
+    pointer-events: none;
+}
+
+/* Overlay container to center content */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    width: 500px;
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .overlay {
+        padding: 15px 20px;
+        width: 90%;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Participant Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="background.css"> -->
+
+</head>
+<body>
+  <!-- Second Page -->
+  <div class="content-container">
+    <h1>Enter Details for Participants</h1>
+    <form id="detailsForm">
+      <div id="participantsDetails">
+        <!-- Participant input fields will be generated here -->
+      </div>
+
+      <div class="topic-section">
+        <label for="presentationTopic">Presentation Topic:</label>
+        <input 
+          type="text" 
+          id="presentationTopic" 
+          name="presentationTopic" 
+          placeholder="Enter presentation topic" 
+          required>
+      </div>
+
+      <div class="radio-group">
+        <label>Presentation Given:</label>
+        <label>
+          <input 
+            type="radio" 
+            name="presentationGiven" 
+            value="Yes" 
+            required> Yes
+        </label>
+        <label>
+          <input 
+            type="radio" 
+            name="presentationGiven" 
+            value="No" 
+            required> No
+        </label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Dynamically generate participant input fields based on query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const numParticipants = urlParams.get("participants");
+
+    const participantsDetails = document.getElementById("participantsDetails");
+
+    if (numParticipants) {
+      for (let i = 1; i <= parseInt(numParticipants); i++) {
+        const participantDiv = document.createElement("div");
+        participantDiv.className = "participant";
+
+        participantDiv.innerHTML = `
+          <label for="participant${i}Name">Participant ${i} Name:</label>
+          <input 
+            type="text" 
+            id="participant${i}Name" 
+            name="participant${i}Name" 
+            placeholder="Enter name" 
+            required>
+          
+          <label for="participant${i}RollNo">Participant ${i} Roll No:</label>
+          <input 
+            type="text" 
+            id="participant${i}RollNo" 
+            name="participant${i}RollNo" 
+            placeholder="Enter 4-digit roll number" 
+            pattern="\\d{4}" 
+            title="Roll number must be exactly 4 digits" 
+            required>
+        `;
+
+        participantsDetails.appendChild(participantDiv);
+      }
+    }
+
+    // Handle form submission
+    document.getElementById("detailsForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Collect data
+      const data = {};
+      const topic = document.getElementById("presentationTopic").value;
+      const pres = document.querySelector('input[name="presentationGiven"]:checked').value;
+
+      data["topic"] = topic;
+      data["Pres"] = pres;
+
+      // Collect participant data
+      for (let i = 1; i <= parseInt(numParticipants); i++) {
+        const name = document.getElementById(`participant${i}Name`).value;
+        const roll = document.getElementById(`participant${i}RollNo`).value;
+
+        data[`name${i}`] = name;
+        data[`roll${i}`] = roll;
+      }
+
+      // Send data to Google Sheets API
+      fetch("https://sheetdb.io/api/v1/7u015qfzoz7ky", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          alert("Data successfully submitted!");
+          console.log(result);
+        })
+        .catch((error) => {
+          alert("Failed to submit data!");
+          console.error(error);
+        });
+    });
+  </script>
+  <script src="background.js"></script>
+
+</body>
+</html>

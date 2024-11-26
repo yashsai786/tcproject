@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participant Selection</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="background.css">
+
+  <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+</head>
+<body>
+  <!-- First Page -->
+  <div class="content-container">
+    <h1>Select Number of Participants</h1>
+    <form id="participantForm" action="page2.html" method="get">
+      <label for="participants">Team Size:</label>
+      <select name="participants" id="participants" required>
+        <option value="" disabled selected>Select...</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+      <button type="submit">Next</button>
+    </form>
+    
+  </div>
+  <script src="background.js"></script>
+
+</body>
+</html>
